@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "standalone", // Removed due to routing bug
+  output: "standalone",
 };
 
 export default nextConfig;

@@ -75,7 +75,7 @@ export default function CaseDetailsPage() {
             </CardHeader>
             <CardContent className="pt-6">
               <p className="text-muted-foreground leading-relaxed italic border-l-4 border-primary pl-4">
-                "{narrative}"
+                &quot;{narrative}&quot;
               </p>
               
               <div className="mt-6 space-y-3">

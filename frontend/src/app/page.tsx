@@ -5,11 +5,13 @@ import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ShieldAlert, ShieldCheck, Activity } from "lucide-react";
+import { Activity } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function LiveMonitoringPage() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [transactions, setTransactions] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [chartData, setChartData] = useState<any[]>([]);
   const [isConnected, setIsConnected] = useState(false);
 
@@ -18,7 +20,7 @@ export default function LiveMonitoringPage() {
     const socket = new SockJS(wsUrl);
     const stompClient = new Client({
       webSocketFactory: () => socket,
-      debug: (str) => {
+      debug: () => {
         // console.log(str);
       },
       onConnect: () => {
@@ -138,7 +140,7 @@ export default function LiveMonitoringPage() {
                 </div>
                 
                 <div className="text-sm md:max-w-md bg-black/20 p-3 rounded-md text-muted-foreground italic border border-white/5">
-                  "{tx.narrative}"
+                  &quot;{tx.narrative}&quot;
                 </div>
               </CardContent>
             </Card>
