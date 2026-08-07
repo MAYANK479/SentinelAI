@@ -14,7 +14,8 @@ export default function LiveMonitoringPage() {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const socket = new SockJS("http://localhost:8080/ws");
+    const wsUrl = process.env.NEXT_PUBLIC_WS_URL || "http://localhost:8080/ws";
+    const socket = new SockJS(wsUrl);
     const stompClient = new Client({
       webSocketFactory: () => socket,
       debug: (str) => {
