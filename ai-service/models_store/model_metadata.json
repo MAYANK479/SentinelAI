@@ -1,0 +1,52 @@
+{
+    "best_model": "Logistic Regression",
+    "features": [
+        "Amount",
+        "MerchantCategoryRisk",
+        "NightTime",
+        "Velocity",
+        "GeographicJump",
+        "NewDevice",
+        "VPNUsed",
+        "SpendDeviation",
+        "FailedAttempts",
+        "Time"
+    ],
+    "metrics": {
+        "Logistic Regression": {
+            "accuracy": 0.9546666666666667,
+            "precision": 0.4791666666666667,
+            "recall": 0.71875,
+            "f1_score": 0.575,
+            "f2_score": 0.6534090909090909,
+            "roc_auc": 0.9629613509749303,
+            "pr_auc": 0.6850507889542601,
+            "precision_at_100": 0.29,
+            "net_cost_saved": 10875.0
+        },
+        "Random Forest": {
+            "accuracy": 0.96,
+            "precision": 0.5263157894736842,
+            "recall": 0.625,
+            "f1_score": 0.5714285714285714,
+            "f2_score": 0.6024096385542168,
+            "roc_auc": 0.9554317548746519,
+            "pr_auc": 0.544835356009147,
+            "precision_at_100": 0.28,
+            "net_cost_saved": 9550.0
+        },
+        "XGBoost": {
+            "accuracy": 0.9586666666666667,
+            "precision": 0.5111111111111111,
+            "recall": 0.71875,
+            "f1_score": 0.5974025974025974,
+            "f2_score": 0.6647398843930635,
+            "roc_auc": 0.9482938718662953,
+            "pr_auc": 0.539887865967255,
+            "precision_at_100": 0.27,
+            "net_cost_saved": 10950.0
+        }
+    },
+    "num_train_samples": 3500,
+    "training_date": "2026-08-07T19:56:32.966564"
+}

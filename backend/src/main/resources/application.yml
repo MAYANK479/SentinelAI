@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: SentinelAI-Backend
+  
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/sentineldb
+    username: ${DB_USER:sentinel}
+    password: ${DB_PASS:sentinelpassword}
+    driver-class-name: org.postgresql.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwt:
+    secret: "7a8c3d9b4f2e1a5b6c0d8e2f4a1b3c9d7a8c3d9b4f2e1a5b6c0d8e2f4a1b3c9d" # Minimum 256-bit key for HS256
+    expiration: 86400000 # 1 day in ms
+  ai-service:
+    url: ${AI_SERVICE_URL:http://localhost:8000/api/v1}
+
+server:
+  port: 8080

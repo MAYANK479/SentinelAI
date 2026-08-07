@@ -1,0 +1,62 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sentinel_db
+    environment:
+      POSTGRES_USER: sentinel
+      POSTGRES_PASSWORD: sentinelpassword
+      POSTGRES_DB: sentinel_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sentinel -d sentinel_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ai-service:
+    build:
+      context: ./ai-service
+    container_name: sentinel_ai_service
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      # - OPENAI_API_KEY=your_key_here
+    volumes:
+      - ./ai-service/models_store:/app/models_store
+    
+  backend:
+    build:
+      context: ./backend
+    container_name: sentinel_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sentinel_db
+      - SPRING_DATASOURCE_USERNAME=sentinel
+      - SPRING_DATASOURCE_PASSWORD=sentinelpassword
+      - SPRING_FLYWAY_URL=jdbc:postgresql://db:5432/sentinel_db
+      - SPRING_FLYWAY_USER=sentinel
+      - SPRING_FLYWAY_PASSWORD=sentinelpassword
+      - APP_AI_SERVICE_URL=http://ai-service:8000/api/v1
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: sentinel_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
