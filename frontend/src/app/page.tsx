@@ -14,12 +14,17 @@ export default function LiveMonitoringPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [chartData, setChartData] = useState<any[]>([]);
   const [isConnected, setIsConnected] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const wsUrl = process.env.NEXT_PUBLIC_WS_URL || "http://localhost:8080/ws";
-    const socket = new SockJS(wsUrl);
+    
     const stompClient = new Client({
-      webSocketFactory: () => socket,
+      webSocketFactory: () => new SockJS(wsUrl),
       debug: () => {
         // console.log(str);
       },
@@ -48,6 +53,8 @@ export default function LiveMonitoringPage() {
       stompClient.deactivate();
     };
   }, []);
+
+  if (!isMounted) return null;
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">

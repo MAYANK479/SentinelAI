@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -27,8 +27,15 @@ export default function CaseDetailsPage() {
   const params = useParams();
   const caseId = params.id as string;
   const [status, setStatus] = useState("OPEN");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const narrative = "Flagged due to high contribution from VPNUsed (0.28 influence) and significant deviation from 30-day historical baseline. The model assigns a 92.4% fraud probability. Recommend hold + verify device and customer identity.";
+
+  if (!isMounted) return null;
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
