@@ -1,12 +1,12 @@
-version: '3.8'
+
 services:
   db:
     image: postgres:16-alpine
     container_name: sentinel_db
     environment:
-      POSTGRES_USER: sentinel
-      POSTGRES_PASSWORD: sentinelpassword
-      POSTGRES_DB: sentinel_db
+      POSTGRES_USER: ${POSTGRES_USER:-sentinel}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sentinelpassword}
+      POSTGRES_DB: ${POSTGRES_DB:-sentinel_db}
     ports:
       - "5432:5432"
     volumes:
@@ -41,12 +41,12 @@ services:
       ai-service:
         condition: service_started
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sentinel_db
-      - SPRING_DATASOURCE_USERNAME=sentinel
-      - SPRING_DATASOURCE_PASSWORD=sentinelpassword
-      - SPRING_FLYWAY_URL=jdbc:postgresql://db:5432/sentinel_db
-      - SPRING_FLYWAY_USER=sentinel
-      - SPRING_FLYWAY_PASSWORD=sentinelpassword
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB:-sentinel_db}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-sentinel}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-sentinelpassword}
+      - SPRING_FLYWAY_URL=jdbc:postgresql://db:5432/${POSTGRES_DB:-sentinel_db}
+      - SPRING_FLYWAY_USER=${POSTGRES_USER:-sentinel}
+      - SPRING_FLYWAY_PASSWORD=${POSTGRES_PASSWORD:-sentinelpassword}
       - APP_AI_SERVICE_URL=http://ai-service:8000/api/v1
 
   frontend:
