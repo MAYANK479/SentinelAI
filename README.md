@@ -12,6 +12,11 @@ SentinelAI is a high-performance, real-time fraud detection platform built to an
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
+## Live Demo
+
+🔥 **Live Dashboard:** [https://sentinel-dashboard-zv4v.onrender.com](https://sentinel-dashboard-zv4v.onrender.com)  
+*(Note: As this is hosted on a free Render tier, the backend and AI services may take up to 50 seconds to spin up from sleep if inactive).*
+
 ## Why SentinelAI?
 
 Financial fraud cannot be stopped by static rules alone, but relying entirely on black-box machine learning can lead to unexplainable false positives. SentinelAI solves this by pairing the speed and determinism of a dynamic rule engine with the adaptability of an ensemble machine learning model. This hybrid approach ensures that obvious fraud is blocked instantly, while subtle, emerging fraud patterns are caught by the predictive AI layer.
@@ -117,11 +122,15 @@ Once the containers are successfully running, the services will be available at:
 
 *Note: The `docker-compose.yml` file contains default local-only demo credentials for PostgreSQL. For a production deployment, ensure you configure proper environment variables and secrets.*
 
-## API and Service Endpoints
+## API and Service Endpoints (Local)
+
+If you are running the project locally via Docker Compose, the services expose the following endpoints:
 
 - **AI Service Prediction**: `POST http://localhost:8000/api/v1/predict`
 - **AI Service Retraining**: `POST http://localhost:8000/api/v1/retrain`
 - **Backend WebSocket Endpoint**: `ws://localhost:8080/ws`
+
+*(For production, replace `localhost` with your respective deployed Render service URLs).*
 
 ## Explainability
 
