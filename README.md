@@ -17,6 +17,14 @@ SentinelAI is a high-performance, real-time fraud detection platform built to an
 🔥 **Live Dashboard:** [https://sentinel-dashboard-zv4v.onrender.com](https://sentinel-dashboard-zv4v.onrender.com)  
 *(Note: As this is hosted on a free Render tier, the backend and AI services may take up to 50 seconds to spin up from sleep if inactive).*
 
+## Screenshots
+
+| Live Monitoring | Case Management |
+| :---: | :---: |
+| ![Live Monitoring](assets/live_monitoring.png) | ![Case Management](assets/case_management.png) |
+| **Rule Engine** | **Business Impact** |
+| ![Rule Engine](assets/rule_engine.png) | ![Business Impact](assets/business_impact.png) |
+
 ## Why SentinelAI?
 
 Financial fraud cannot be stopped by static rules alone, but relying entirely on black-box machine learning can lead to unexplainable false positives. SentinelAI solves this by pairing the speed and determinism of a dynamic rule engine with the adaptability of an ensemble machine learning model. This hybrid approach ensures that obvious fraud is blocked instantly, while subtle, emerging fraud patterns are caught by the predictive AI layer.
