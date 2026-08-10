@@ -52,6 +52,7 @@ public class ExplainabilityIntegrator {
     }
 
     @Data
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
     public static class AiPredictionResult {
         private Double ml_probability;
         private List<Map<String, Object>> explanations;
