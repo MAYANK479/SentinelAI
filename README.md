@@ -2,7 +2,7 @@
 
 **Real-Time Fraud Detection with Hybrid Rules + Machine Learning**
 
-SentinelAI is a high-performance, real-time fraud detection platform built to analyze financial transactions. By combining deterministic business heuristics with probabilistic machine learning models, SentinelAI provides a composite risk assessment with microsecond latency. The system streams evaluation results to an interactive live dashboard, offering both automated detection and human-readable feature explainability.
+SentinelAI is a real-time fraud detection platform built to analyze financial transactions. By combining deterministic business heuristics with machine learning models, SentinelAI produces a composite risk assessment and streams evaluation results to an interactive monitoring dashboard with human-readable explanations.
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
@@ -27,7 +27,7 @@ SentinelAI is a high-performance, real-time fraud detection platform built to an
 
 ## Why SentinelAI?
 
-Financial fraud cannot be stopped by static rules alone, but relying entirely on black-box machine learning can lead to unexplainable false positives. SentinelAI solves this by pairing the speed and determinism of a dynamic rule engine with the adaptability of an ensemble machine learning model. This hybrid approach ensures that obvious fraud is blocked instantly, while subtle, emerging fraud patterns are caught by the predictive AI layer.
+Financial fraud cannot be stopped by static rules alone, but relying entirely on black-box machine learning can lead to unexplainable false positives. SentinelAI solves this by pairing the speed and determinism of a dynamic rule engine with the adaptability of an ensemble machine learning model. This hybrid approach allows deterministic rules to identify explicit suspicious patterns while ML models contribute probabilistic risk signals for less obvious cases.
 
 ## Key Features
 
