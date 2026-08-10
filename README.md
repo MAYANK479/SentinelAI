@@ -122,15 +122,15 @@ Once the containers are successfully running, the services will be available at:
 
 *Note: The `docker-compose.yml` file contains default local-only demo credentials for PostgreSQL. For a production deployment, ensure you configure proper environment variables and secrets.*
 
-## API and Service Endpoints (Local)
+## API and Service Endpoints
 
-If you are running the project locally via Docker Compose, the services expose the following endpoints:
+**Live Deployed Endpoints (Render):**
+- **Backend WebSocket**: `wss://sentinel-backend-d1qo.onrender.com/ws`
 
+**Local Development Endpoints (Docker Compose):**
 - **AI Service Prediction**: `POST http://localhost:8000/api/v1/predict`
 - **AI Service Retraining**: `POST http://localhost:8000/api/v1/retrain`
 - **Backend WebSocket Endpoint**: `ws://localhost:8080/ws`
-
-*(For production, replace `localhost` with your respective deployed Render service URLs).*
 
 ## Explainability
 
